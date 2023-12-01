@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
               Task('Aprender Flutter no intervalo do curso!',
                   'assets/images/flutter.png', 2),
               Task('Andar de Bike', 'assets/images/bike.webp', 5),
-              Task('Meditar', 'assets/images/meditar.jpge', 1),
+              Task('Meditar', 'assets/images/meditar.jpg', 1),
               Task('Ler', 'assets/images/ler.jpg', 3),
               Task('Jogar', 'assets/images/jogar.jpg', 4),
             ],
