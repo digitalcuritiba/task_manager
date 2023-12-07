@@ -24,7 +24,7 @@ class _FormScreenState extends State<FormScreen> {
           width: 400,
           decoration: BoxDecoration(
               color: Colors.black12,
-              borderRadius: BorderRadius.circular(01),
+              borderRadius: BorderRadius.circular(05),
               border: Border.all(width: 3)),
           child: Column(
             children: [
@@ -57,6 +57,9 @@ class _FormScreenState extends State<FormScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
+                  onChanged: (Text) {
+                    setState(() {});
+                  },
                   controller: imageController,
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
@@ -66,6 +69,26 @@ class _FormScreenState extends State<FormScreen> {
                     filled: true,
                   ),
                 ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(180),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                        imageController.text,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Image.asset('assets/images/nophoto.png');
+                        },
+                        fit: BoxFit.cover,
+                      ),
+                    )),
               ),
               ElevatedButton(
                 onPressed: () {
