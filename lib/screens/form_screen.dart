@@ -131,6 +131,12 @@ class _FormScreenState extends State<FormScreen> {
                             content: Text('Printando nova Tarefa'),
                           ),
                         );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) => const FormScreen(),
+                        //   ),
+                        // );
                         Navigator.pop(context);
                       }
                     },
@@ -144,4 +150,4 @@ class _FormScreenState extends State<FormScreen> {
       ),
     );
   }
-}// TODO Implement this library.
+}
