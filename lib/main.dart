@@ -17,13 +17,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Home',
+      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TaskInherited(
-        child: const InitialScreen(),
-      ),
+      home: TaskInherited(child: const InitialScreen()),
     );
   }
 }

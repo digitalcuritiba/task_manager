@@ -17,10 +17,7 @@ class _TaskState extends State<Task> {
   int nivel = 0;
 
   bool assetOrNetwork() {
-    if (widget.foto.contains('http')) {
-      return false;
-    }
-    return true;
+    return widget.foto.contains('http');
   }
 
   @override

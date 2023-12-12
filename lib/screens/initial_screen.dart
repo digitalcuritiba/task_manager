@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/data/task_inherited.dart';
 import 'package:task_manager/screens/form_screen.dart';
-import '../components/tasks.dart';
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({Key? key}) : super(key: key);
@@ -11,7 +10,6 @@ class InitialScreen extends StatefulWidget {
 }
 
 class _InitialScreenState extends State<InitialScreen> {
-  bool opacidade = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,10 +18,8 @@ class _InitialScreenState extends State<InitialScreen> {
         leading: const Icon(Icons.add_task),
       ),
       body: ListView(
+        padding: const EdgeInsets.only(top: 8, bottom: 70),
         children: TaskInherited.of(context).taskList,
-        padding: EdgeInsets.only(
-            top: 8,
-            bottom: 70), // Adicione margens ao redor do Container, se desejar
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
