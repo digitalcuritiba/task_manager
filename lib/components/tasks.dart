@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:task_manager/components/dificulty.dart';
+import 'package:task_manager/components/difficulty.dart';
 
 class Task extends StatefulWidget {
-  final String nome;
-  final String foto;
-  final int dificuldade;
+  final String name;
+  final String photo;
+  final int difficulty;
 
-  const Task(this.nome, this.foto, this.dificuldade, {Key? key})
-      : super(key: key);
+  Task(this.name, this.photo, this.difficulty, {Key? key}) : super(key: key);
+
+  int level = 0;
 
   @override
   State<Task> createState() => _TaskState();
 }
 
 class _TaskState extends State<Task> {
-  int nivel = 0;
-
   bool assetOrNetwork() {
-    return widget.foto.contains('http');
+    if (widget.photo.contains('http')) {
+      return false;
+    }
+    return true;
   }
 
   @override
@@ -54,14 +56,8 @@ class _TaskState extends State<Task> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(4),
                         child: assetOrNetwork()
-                            ? Image.asset(
-                                widget.foto,
-                                fit: BoxFit.cover,
-                              )
-                            : Image.network(
-                                widget.foto,
-                                fit: BoxFit.cover,
-                              ),
+                            ? Image.asset(widget.photo, fit: BoxFit.cover)
+                            : Image.network(widget.photo, fit: BoxFit.cover),
                       ),
                     ),
                     Column(
@@ -71,14 +67,14 @@ class _TaskState extends State<Task> {
                         SizedBox(
                           width: 200,
                           child: Text(
-                            widget.nome,
+                            widget.name,
                             style: const TextStyle(
                               fontSize: 24,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
                         ),
-                        Difficulty(widget.dificuldade),
+                        Difficulty(widget.difficulty),
                       ],
                     ),
                     SizedBox(
@@ -87,9 +83,9 @@ class _TaskState extends State<Task> {
                       child: ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            nivel++;
+                            widget.level++;
                           });
-                          print(nivel);
+                          //print(level);
                         },
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -116,13 +112,13 @@ class _TaskState extends State<Task> {
                       width: 200,
                       child: LinearProgressIndicator(
                         color: Colors.white,
-                        value: (widget.dificuldade > 0)
-                            ? (nivel / widget.dificuldade) / 10
+                        value: (widget.difficulty > 0)
+                            ? (widget.level / widget.difficulty) / 10
                             : 1,
                       ),
                     ),
                     Text(
-                      'Nível: $nivel',
+                      'Nível: ${widget.level}',
                       style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
